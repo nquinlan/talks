@@ -25,7 +25,7 @@
 
 &lt;p&gt;&lt;a href=&quot;http://nicholasquinlan.com&quot;&gt;Hi, I&amp;rsquo;m Nick.&lt;/a&gt; I&amp;rsquo;m a Developer Evangelist for &lt;a href=&quot;http://sendgrid.com/&quot;&gt;SendGrid&lt;/a&gt;. Before that I worked at &lt;a href=&quot;http://www.ethoseo.com/&quot;&gt;ethoseo internet marketing&lt;/a&gt; helping some of the world&amp;rsquo;s largest brands use internet properties to better connect with their customers.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;A Note On SendGrid&lt;/strong&gt;: Naturally, as a SendGrid Developer Evangelist all code samples use SendGrid, however, as Parse Modules are well abstracted you can &lt;em&gt;very&lt;/em&gt; easily switch out &lt;code&gt;SendGrid.send&lt;/code&gt; for another email company&amp;rsquo;s method.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A Note On SendGrid&lt;/strong&gt;: Naturally, as a SendGrid Developer Evangelist all code samples use SendGrid, however, as Parse Modules are well abstracted you can &lt;em&gt;very&lt;/em&gt; easily switch out &lt;code&gt;SendGrid.sendEmail&lt;/code&gt; for another email company&amp;rsquo;s method.&lt;/p&gt;
 
 &lt;a name=&quot;Notification.Styles&quot;&gt;&lt;/a&gt;
 &lt;h2&gt;Notification Styles&lt;/h2&gt;
