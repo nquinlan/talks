@@ -1,0 +1,5 @@
+.slide-container img {
+	border-top: 3px solid #eee;
+	border-bottom: 3px solid #eee;
+	border-radius: 0;
+}
