@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talks by Nick Quinlan</title>
+    <description>Talks given by Nick Quinlan</description>
+    <link></link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Email: Driving Repeat Usage for Your App</title>
+        <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;26% of users never open an app a second time. This talk will explore customer communication and engagement through email and give examples of how to apply them in a Parse app. Learn when to use email to connect with customers (and when to use something else). See code samples that use Cloud Code and Parse modules to painlessly send and receive email, while gaining additional insight into customer interactions through email analytics.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/email-driving-repeat-usage-for-your-app.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This talk was originally given at &lt;a href=&quot;http://parsedeveloperday.com&quot;&gt;Parse Developer Day&lt;/a&gt; in San Francisco.  It&amp;rsquo;s been adapted to text below.&lt;/p&gt;
+
+&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.002-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href=&quot;http://nicholasquinlan.com&quot;&gt;Hi, I&amp;rsquo;m Nick.&lt;/a&gt; I&amp;rsquo;m a Developer Evangelist for &lt;a href=&quot;http://sendgrid.com/&quot;&gt;SendGrid&lt;/a&gt;. Before that I worked at &lt;a href=&quot;http://www.ethoseo.com/&quot;&gt;ethoseo internet marketing&lt;/a&gt; helping some of the world&amp;rsquo;s largest brands use internet properties to better connect with their customers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A Note On SendGrid&lt;/strong&gt;: Naturally, as a SendGrid Developer Evangelist all code samples use SendGrid, however, as Parse Modules are well abstracted you can &lt;em&gt;very&lt;/em&gt; easily switch out &lt;code&gt;SendGrid.send&lt;/code&gt; for another email company&amp;rsquo;s method.&lt;/p&gt;
+
+&lt;a name=&quot;Notification.Styles&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Notification Styles&lt;/h2&gt;
+
+&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.007-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;p&gt;On a mobile platform like iOS or Android you have a wide variety of notifications methods to pick from. Which naturally leads to the question, &lt;em&gt;&amp;ldquo;Which notification style should I use?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;To answer that, you need to know the strengths and weaknesses of each. Since I&amp;rsquo;m talking about emails, I&amp;rsquo;ll tell you a little about that.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;“Today, if you want to drive retention and repeat usage, there isn&amp;rsquo;t a better way to do it than email.”
+&amp;mdash; &lt;a href=&quot;http://avc.com&quot;&gt;Fred Wilson&lt;/a&gt;, Union Square Ventures&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;a name=&quot;Strengths&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;Strengths&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cross Platform&lt;/strong&gt; &amp;ndash; Email is on every device today, meaning no matter where I am, as your user, I can get email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Within Existing Workflow&lt;/strong&gt; &amp;ndash; I already read my email, which means I&amp;rsquo;m not changing anything to read &lt;em&gt;your&lt;/em&gt; email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Referenceable&lt;/strong&gt; &amp;ndash; Email isn&amp;rsquo;t ephemeral, like notifications, meaning I can go back and reference it. That&amp;rsquo;s especially useful for things like receipts.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preferred Channel&lt;/strong&gt; &amp;ndash; A &lt;a href=&quot;http://pages.exacttarget.com/SFF14-US&quot;&gt;2012 Exact Target Study&lt;/a&gt; found that 77% of consumers want business communications to come through email, rather than another channel.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;a name=&quot;Weaknesses&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;Weaknesses&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Outside Your App&lt;/strong&gt; &amp;ndash; As email is outside your app, by forcing me to use email, you&amp;rsquo;re forcing me to leave your app. &lt;span class=&quot;muted&quot;&gt;(and I may never come back)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross Platform&lt;/strong&gt; &amp;ndash; Being cross-platform is also a weakness for email, as you don&amp;rsquo;t know what capabilities users will have when they open their email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-Immediate&lt;/strong&gt; &amp;ndash; Despite what it might feel like, I&amp;rsquo;m not always in my inbox, so if an email requires immediate action, I might not be there to take it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ignorable&lt;/strong&gt; &amp;ndash; Since everyone get so much email, it&amp;rsquo;s easy to ignore, and I might miss your notification.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;a name=&quot;Key.Uses&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;Key Uses&lt;/h3&gt;
+
+&lt;p&gt;Email has several key uses, where I believe it outshines every other notification method.&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Platform Switches&lt;/li&gt;
+    &lt;li&gt;Receipts&lt;/li&gt;
+    &lt;li&gt;Messaging&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#Onboarding.Emails&quot;&gt;Onboarding&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#Re-Engagement.Emails&quot;&gt;Re-engagement&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;a name=&quot;Great.Email&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;Great Email&lt;/h3&gt;
+
+&lt;p&gt;Knowing that email is &lt;em&gt;awesome&lt;/em&gt; is good, but to take full advantage of it you need to know what makes a &amp;ldquo;Great Email&amp;rdquo;.&lt;/p&gt;
+
+&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.020-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;a name=&quot;Personalization&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;Personalization&lt;/h4&gt;
+
+&lt;p&gt;Personalizing an email can have awesome results. However, if you personalize the wrong email you might have the wrong kind of results: &lt;span style=&quot;color:#A30B00&quot;&gt;negative.&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://bit.ly/18MIJ0j&quot;&gt;Experian found&lt;/a&gt; that &lt;strong&gt;transactional&lt;/strong&gt; emails with subject line personalization received &lt;em&gt;22% higher&lt;/em&gt; open rates.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://bit.ly/16AtY0l&quot;&gt;MailerMail found&lt;/a&gt; &lt;strong&gt;marketing&lt;/strong&gt; emails with personalized subject lines received &lt;em&gt;55% lower&lt;/em&gt; open rates.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;But personalizing the subject line with a name isn&amp;rsquo;t enough. It&amp;rsquo;s better to personalize emails more with things like recommendations unique to the users.&lt;/p&gt;
+
+&lt;a name=&quot;Direct.Link&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;Direct Link&lt;/h4&gt;
+
+&lt;p&gt;When you send a user a link about an event &lt;em&gt;make sure&lt;/em&gt; to have a link in the email bring them to a page or app screen that relates &lt;em&gt;directly&lt;/em&gt; to the event.&lt;/p&gt;
+
+&lt;a name=&quot;How.To.Directly.Link.to.Your.App.From.An.Email&quot;&gt;&lt;/a&gt;
+&lt;h5&gt;How To Directly Link to Your App From An Email&lt;/h5&gt;
+
+&lt;p&gt;As email is cross platform you need to ensure users are shown links that will get them to the right place: on mobile that means your app and on a desktop your website. &lt;strong&gt;So how do you do that?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can use CSS to hide all mobile links on desktop devices and vice-versa for all desktop links.&lt;/p&gt;
+
+&lt;p&gt;Hiding mobile links is seen below:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-b156fc8549eb8efa2468e0aa423868ee&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;span class='line-number'&gt;2&lt;/span&gt;
+&lt;span class='line-number'&gt;3&lt;/span&gt;
+&lt;span class='line-number'&gt;4&lt;/span&gt;
+&lt;span class='line-number'&gt;5&lt;/span&gt;
+&lt;span class='line-number'&gt;6&lt;/span&gt;
+&lt;span class='line-number'&gt;7&lt;/span&gt;
+&lt;span class='line-number'&gt;8&lt;/span&gt;
+&lt;span class='line-number'&gt;9&lt;/span&gt;
+&lt;span class='line-number'&gt;10&lt;/span&gt;
+&lt;span class='line-number'&gt;11&lt;/span&gt;
+&lt;span class='line-number'&gt;12&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='css'&gt;&lt;span class='line'&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;By&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;hide&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;mobile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;elements&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nc&quot;&gt;.mobile-only&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Assume&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;everything&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;under&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;iPhone&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;mobile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;device&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;480px&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Display&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;mobile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;mobile&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;devices&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nc&quot;&gt;.mobile-only&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;        &lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the CSS is in place you can place mobile links to your app around your email as long as they&amp;rsquo;re given the class &lt;code&gt;mobile-only&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-de787d9e7e9a194748de1d6a6589b37f&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;mobile-only&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;YourUrlScheme://coolfeature&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Check out this cool feature!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;However, there are a couple problems with that:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The media queries used rely on size and not actually capability, so if someone has a small window on their desktop they&amp;rsquo;ll see your mobile links.&lt;/li&gt;
+&lt;li&gt;Media queries don&amp;rsquo;t work in all mail clients, so some may still show the mobile links.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;You can counteract this by doing some fancy web code. Shown below with &lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide&quot;&gt;Parse Cloud Code&lt;/a&gt; with &lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide#started-webapp&quot;&gt;Express.js&lt;/a&gt; loaded.&lt;/p&gt;
+
+&lt;p&gt;The following code that would be placed in &lt;code&gt;cloud/app.js&lt;/code&gt; renders the open template (&lt;code&gt;cloud/views/open.hjs&lt;/code&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-78c329bb82dd127751d7da015055dc8b&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;span class='line-number'&gt;2&lt;/span&gt;
+&lt;span class='line-number'&gt;3&lt;/span&gt;
+&lt;span class='line-number'&gt;4&lt;/span&gt;
+&lt;span class='line-number'&gt;5&lt;/span&gt;
+&lt;span class='line-number'&gt;6&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='js'&gt;&lt;span class='line'&gt;&lt;span class=&quot;c1&quot;&gt;// Setup a route for &amp;quot;/open/:location&amp;quot; (e.g. &amp;quot;/open/YayNickQ/timeline&amp;quot;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/open/:location&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;c1&quot;&gt;// Render the open template&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;open&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;The open template (&lt;code&gt;cloud/views/open.hjs&lt;/code&gt;) mentioned in the snippet above is shown below. It provides some context and forwards users on to the app.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-1e97ad45917d86d11e6419e312aa3df5&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;span class='line-number'&gt;2&lt;/span&gt;
+&lt;span class='line-number'&gt;3&lt;/span&gt;
+&lt;span class='line-number'&gt;4&lt;/span&gt;
+&lt;span class='line-number'&gt;5&lt;/span&gt;
+&lt;span class='line-number'&gt;6&lt;/span&gt;
+&lt;span class='line-number'&gt;7&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='line'&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!&amp;mdash; Provide some context about the app and what&amp;#39;s happening &amp;mdash;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Super Cool App is Opening&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If you don&amp;#39;t own it please &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://itunes.apple.com/us/app/myapp/id31415926&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;download it&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;c1&quot;&gt;// Attempt to open your url scheme&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;YourUrlScheme://&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;The code above could be modified to revert back to a desktop website if the user isn&amp;rsquo;t forwarded in a few seconds. ex:&lt;br/&gt;
+&lt;code&gt;setTimeout(function () { document.location.href = + &amp;lt;%= desktoplocation %&amp;gt; }, 3000);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the code is setup you can then place links to it in your email:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-fb663c0a8899f7431421e80c94f7fe00&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;mobile-only&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://your-custom-subdomain.parseapp.com/open/coolfeature&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Check out this cool feature!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;a name=&quot;One.Call.To.Action&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;One Call To Action&lt;/h4&gt;
+
+&lt;p&gt;Finally, to make a great email you need to ensure you only have &lt;strong&gt;one&lt;/strong&gt; call to action, not several. That way you force users to do what you want.&lt;/p&gt;
+
+&lt;a name=&quot;User.Engagement.Emails&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;User Engagement Emails&lt;/h2&gt;
+
+&lt;p&gt;Now that you have some understanding of good emails, it&amp;rsquo;s time to apply that in emails that ensure users will re-engage with your app.&lt;/p&gt;
+
+&lt;a name=&quot;Onboarding.Emails&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;Onboarding Emails&lt;/h3&gt;
+
+&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.030-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;p&gt;When a user comes to your app the first time, they have a &lt;a href=&quot;www.localytics.com/blog/2011/first-impressions-matter-26-percent-of-apps-downloaded-used-just-once/&quot;&gt;26% chance&lt;/a&gt; of closing it and never coming back.&lt;/p&gt;
+
+&lt;p&gt;By emailing them shortly after their first open you get the opportunity to remind them of your app.&lt;/p&gt;
+
+&lt;p&gt;When making one of these emails you need to keep in mind when your app is most useful. &lt;em&gt;Is there a time of day or year when your app is more useful? Does your app become more useful with more data?&lt;/em&gt; Email users when that condition occurs!&lt;/p&gt;
+
+&lt;a name=&quot;How.To.Onboard.New.Users.Using.Cloud.Code&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;How To Onboard New Users Using Cloud Code&lt;/h4&gt;
+
+&lt;p&gt;Once you establish what condition will be best for getting users into the app, it&amp;rsquo;s relatively simple to have Parse Cloud Code send out an email when that condition is met.&lt;/p&gt;
+
+&lt;p&gt;Say for example your app is useful at 9:00am, you can setup an email to be sent to new users every morning by writing the cloud code below. _(Again, this requires &lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide#started-webapp&quot;&gt;Express.js&lt;/a&gt; to be loaded.&lt;/p&gt;
+
+&lt;p class=&quot;muted&quot;&gt;Similar code can be found in the &lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide#webhooks&quot;&gt;Parse documentation under &amp;#8220;Custom Webhooks&amp;#8221;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-58c8bfc8a41f0e547658fe41ffc588e0&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;span class='line-number'&gt;2&lt;/span&gt;
+&lt;span class='line-number'&gt;3&lt;/span&gt;
+&lt;span class='line-number'&gt;4&lt;/span&gt;
+&lt;span class='line-number'&gt;5&lt;/span&gt;
+&lt;span class='line-number'&gt;6&lt;/span&gt;
+&lt;span class='line-number'&gt;7&lt;/span&gt;
+&lt;span class='line-number'&gt;8&lt;/span&gt;
+&lt;span class='line-number'&gt;9&lt;/span&gt;
+&lt;span class='line-number'&gt;10&lt;/span&gt;
+&lt;span class='line-number'&gt;11&lt;/span&gt;
+&lt;span class='line-number'&gt;12&lt;/span&gt;
+&lt;span class='line-number'&gt;13&lt;/span&gt;
+&lt;span class='line-number'&gt;14&lt;/span&gt;
+&lt;span class='line-number'&gt;15&lt;/span&gt;
+&lt;span class='line-number'&gt;16&lt;/span&gt;
+&lt;span class='line-number'&gt;17&lt;/span&gt;
+&lt;span class='line-number'&gt;18&lt;/span&gt;
+&lt;span class='line-number'&gt;19&lt;/span&gt;
+&lt;span class='line-number'&gt;20&lt;/span&gt;
+&lt;span class='line-number'&gt;21&lt;/span&gt;
+&lt;span class='line-number'&gt;22&lt;/span&gt;
+&lt;span class='line-number'&gt;23&lt;/span&gt;
+&lt;span class='line-number'&gt;24&lt;/span&gt;
+&lt;span class='line-number'&gt;25&lt;/span&gt;
+&lt;span class='line-number'&gt;26&lt;/span&gt;
+&lt;span class='line-number'&gt;27&lt;/span&gt;
+&lt;span class='line-number'&gt;28&lt;/span&gt;
+&lt;span class='line-number'&gt;29&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='js'&gt;&lt;span class='line'&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/reengage&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;c1&quot;&gt;// Require basic authentication so only people/services you authorize can call your private endpoint&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;basicAuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;USERNAME_OF_YOUR_CHOICE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;PASSWORD_OF_YOUR_CHOICE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;c1&quot;&gt;// Use the Parse Master Key to edit user records without being logged in&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cloud&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useMasterKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Initiate a Parse query for the Parse.User object&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Check to see if the user has been onboarded&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;onboarded&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;        &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uninitiated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;          &lt;span class=&quot;c1&quot;&gt;// Loop through each non-onboarded user&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;          &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uninitiated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uninitiated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;c1&quot;&gt;// Send the user an email onboarding them&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;nx&quot;&gt;SendGrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;you@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Welcome to my app!&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;generateWelcomeEmailBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;c1&quot;&gt;// Save that the user has been onboarded&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;onboarded&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Once this webhook is setup, you&amp;rsquo;ll need to call it every day at 9:00am. Currently (2013-09-05) Parse Cloud Code does not allow for scheduling, so you must go to an outside service for this to run.&lt;/p&gt;
+
+&lt;p&gt;Luckily there are several services that allow for this, a few to consider are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.easycron.com&quot;&gt;EasyCron&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.setcronjob.com/&quot;&gt;SetCronJob&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cronless.com/&quot;&gt;CronLess&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;After picking out a service you&amp;rsquo;ll give it the URL of your Parse App&amp;rsquo;s Custom Webhook. Something like:&lt;br/&gt;
+&lt;code&gt;http://USERNAME_OF_YOUR_CHOICE:PASSWORD_OF_YOUR_CHOICE@your-subdomain.parseapp.com/onboardNewUsers&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Pay attention to the timezone your user is in. 9am PST is 3am in Australia.&lt;/p&gt;
+
+&lt;a name=&quot;Re-Engagement.Emails&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;Re-Engagement Emails&lt;/h3&gt;
+
+&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.036-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;p&gt;Re-Engagement is a similar ball game. Users may abandon your app after trying it, &lt;em&gt;or even&lt;/em&gt; after using it for a while. So you&amp;rsquo;re left with the question: how do you get them back? Re-enegagement emails remind users of your app and prompt them to come back.&lt;/p&gt;
+
+&lt;p&gt;Often to get users to re-engage you&amp;rsquo;ll need to show them the benefit they&amp;rsquo;ll get for doing so. Many apps will show users they&amp;rsquo;re missing content or friends. Others that sell products will give discounts.&lt;/p&gt;
+
+&lt;a name=&quot;How.to.Re-Engage.Users.with.Cloud.Code&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;How to Re-Engage Users with Cloud Code&lt;/h4&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve decided to get users to re-engage, you need to code it.&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice this code looks very similar to the onboarding code. The only difference is here you&amp;rsquo;ve chosen a &amp;ldquo;disengaged threshold&amp;rdquo;, a point where you classify users as disengaged. You&amp;rsquo;ll then need to re-engage them.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure class=&quot;code&quot; id=&quot;code-block-7cec443a1b55930ac01e68ebbaa72776&quot;&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre class=&quot;line-numbers&quot;&gt;&lt;span class='line-number'&gt;1&lt;/span&gt;
+&lt;span class='line-number'&gt;2&lt;/span&gt;
+&lt;span class='line-number'&gt;3&lt;/span&gt;
+&lt;span class='line-number'&gt;4&lt;/span&gt;
+&lt;span class='line-number'&gt;5&lt;/span&gt;
+&lt;span class='line-number'&gt;6&lt;/span&gt;
+&lt;span class='line-number'&gt;7&lt;/span&gt;
+&lt;span class='line-number'&gt;8&lt;/span&gt;
+&lt;span class='line-number'&gt;9&lt;/span&gt;
+&lt;span class='line-number'&gt;10&lt;/span&gt;
+&lt;span class='line-number'&gt;11&lt;/span&gt;
+&lt;span class='line-number'&gt;12&lt;/span&gt;
+&lt;span class='line-number'&gt;13&lt;/span&gt;
+&lt;span class='line-number'&gt;14&lt;/span&gt;
+&lt;span class='line-number'&gt;15&lt;/span&gt;
+&lt;span class='line-number'&gt;16&lt;/span&gt;
+&lt;span class='line-number'&gt;17&lt;/span&gt;
+&lt;span class='line-number'&gt;18&lt;/span&gt;
+&lt;span class='line-number'&gt;19&lt;/span&gt;
+&lt;span class='line-number'&gt;20&lt;/span&gt;
+&lt;span class='line-number'&gt;21&lt;/span&gt;
+&lt;span class='line-number'&gt;22&lt;/span&gt;
+&lt;span class='line-number'&gt;23&lt;/span&gt;
+&lt;span class='line-number'&gt;24&lt;/span&gt;
+&lt;span class='line-number'&gt;25&lt;/span&gt;
+&lt;span class='line-number'&gt;26&lt;/span&gt;
+&lt;span class='line-number'&gt;27&lt;/span&gt;
+&lt;span class='line-number'&gt;28&lt;/span&gt;
+&lt;span class='line-number'&gt;29&lt;/span&gt;
+&lt;span class='line-number'&gt;30&lt;/span&gt;
+&lt;span class='line-number'&gt;31&lt;/span&gt;
+&lt;span class='line-number'&gt;32&lt;/span&gt;
+&lt;span class='line-number'&gt;33&lt;/span&gt;
+&lt;span class='line-number'&gt;34&lt;/span&gt;
+&lt;span class='line-number'&gt;35&lt;/span&gt;
+&lt;span class='line-number'&gt;36&lt;/span&gt;
+&lt;span class='line-number'&gt;37&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='js'&gt;&lt;span class='line'&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/reengage&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;c1&quot;&gt;// Require basic authentication so only people/services you authorize can call your private endpoint&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;basicAuth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;USERNAME_OF_YOUR_CHOICE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;PASSWORD_OF_YOUR_CHOICE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;c1&quot;&gt;// Use the Parse Master Key to edit user records without being logged in&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cloud&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useMasterKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Initiate a Parse query for the Parse.User object&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Check if the user has been &amp;quot;rengaged already&amp;quot;&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Note: You&amp;#39;d probably want to do something a little more advanced&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equalTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;reengaged&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Check if the user is &amp;quot;disengaged&amp;quot; (i.e. they haven&amp;#39;t opened your app in over a month)&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Note: This assumes you&amp;#39;ve setup your app to log the date to User.lastOpened whenever the app is opened&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;// Also: lastMonth() is not a real function, you can make a similar function as so:&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;//       http://stackoverflow.com/questions/605113/find-first-day-of-previous-month-in-javascript&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;//       However, you&amp;#39;d probably want something a little better suited to your app.&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;c1&quot;&gt;//       Using your analytics, you can find a time period where users disengaged from your app don&amp;#39;t come back.&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lessThanOrEqualTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;lastOpened&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lastMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;        &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;disengaged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;          &lt;span class=&quot;c1&quot;&gt;// Loop through each disengaged user&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;          &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disengaged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disengaged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;c1&quot;&gt;// Send the user an email re-engaging them&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;nx&quot;&gt;SendGrid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;you@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;We Haven’t Seen You In A While&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;              &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;generateReEngagementEmailBody&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;c1&quot;&gt;// Save the user has been re-engaged to prevent spamming them&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;            &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;reengaged&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, again, you&amp;rsquo;ll need to use a cron service to trigger the webhook, daily (or whenever you decide).&lt;/p&gt;
+
+&lt;a name=&quot;Tools&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Tools&lt;/h2&gt;
+
+&lt;p&gt;Much of engaging users is understanding them and interacting with them in the right way. For that you&amp;rsquo;ll need the right tools.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://google.com/analytics&quot;&gt;Google Analytics&lt;/a&gt; gives awesome analytics power for apps and websites though Universal Analytics. However, GA&amp;rsquo;s ToS prevents you from identifying individual users, a necessary step to reengagement. Both &lt;a href=&quot;https://mixpanel.com/&quot;&gt;MixPanel&lt;/a&gt; and &lt;a href=&quot;https://www.kissmetrics.com&quot;&gt;KissMetrics&lt;/a&gt; allow individual user tracking (and when combined with Parse User data can be quite powerful). &lt;a href=&quot;http://vessel.io&quot;&gt;Vessel&lt;/a&gt; gives some analytics, advanced crash reporting, and allows for AB Testing which is another way to further improve user engagement.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.userfox.com/&quot;&gt;Userfox&lt;/a&gt; is a service to  keep an eye on. They facilitate welcome emails and all sorts of other marketing strategies with minimal additional code. Currently they do not support iOS or Android. &lt;em&gt;However&lt;/em&gt;, using their &lt;a href=&quot;&quot;&gt;API&lt;/a&gt; you could hack it to make iOS/Android work.&lt;/p&gt;
+
+&lt;p&gt;Finally, a plug: you should definitely &lt;a href=&quot;http://sendgrid.com&quot;&gt;use SendGrid&lt;/a&gt; for email.&lt;/p&gt;
+
+&lt;a name=&quot;Demo.App&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Demo App&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/FollowAppIcon.png&quot; style=&quot;float: right; padding: 0 0 20px 20px;&quot;&gt; My coworker Kunal and I created an app to give a better idea of how Parse and SendGrid interact. It&amp;rsquo;s called FollowApp.&lt;/p&gt;
+
+&lt;p&gt;FollowApp is yet another app for exchanging contact information. However, rather than trying to substitute cards, it sends a templated email with a little information to the people you meet at events.&lt;/p&gt;
+
+&lt;p&gt;The app then notifies you when someone opens the email you sent.&lt;/p&gt;
+
+&lt;p&gt;FollowApp works by storing all data in Parse Objects and then sending email upon creating a new contact. It utilizes the SendGrid Events Webhook and Parse&amp;rsquo;s Notification platform to notify users of received email.&lt;/p&gt;
+
+&lt;p&gt;You will be able to find the code on &lt;a href=&quot;https://github.com/nquinlan/follow-app&quot;&gt;Github&lt;/a&gt; when iOS7 comes out.&lt;/p&gt;
+
+&lt;a name=&quot;Additional.Resources&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Additional Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kunal wrote a fantastic &lt;a href=&quot;http://blog.sendgrid.com/create-an-ios-app-with-parse-platform-and-sendgrid/&quot;&gt;post on the SendGrid blog explaining Parse, Cloud Code, and the SendGrid Module&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.parse.com/docs/cloud_code_guide&quot;&gt;Parse Cloud Code Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.parse.com/docs/cloud_modules_guide#sendgrid&quot;&gt;Parse Cloud Code SendGrid Module Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 05 Sep 2013 00:00:00 -0700</pubDate>
+        <link>/2013/09/05/email-driving-repeat-usage-for-your-app/</link>
+        <guid isPermaLink="true">/2013/09/05/email-driving-repeat-usage-for-your-app/</guid>
+      </item>
+    
+      <item>
+        <title>Developing Your Personal Website</title>
+        <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-02-10-developing-your-personal-website/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;Today, to be taken seriously in tech, you need to have a website. Building a website for yourself is a great way to build your personal brand and differentiate yourself from amongst other candidates when applying for future jobs. Learn how to make your own and even use WordPress to create a website &lt;em&gt;during&lt;/em&gt; the workshop.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/resources/2013-02-10-developing-your-personal-website/developing-your-personal-website.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This workshop was originally given in Bellingham, WA for &lt;a href=&quot;http://yorktown.cbe.wwu.edu/clubs/misa/&quot;&gt;The Management Information Systems Association of Western Washington University&lt;/a&gt;. You may view the &lt;a href=&quot;/resources/2013-02-10-developing-your-personal-website/developing-your-personal-website.pdf&quot;&gt;slides&lt;/a&gt; and additional information given after the workshop.&lt;/p&gt;
+
+&lt;a name=&quot;More...&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;More…&lt;/h2&gt;
+
+&lt;p&gt;Unfortunately, there was a lot I was unable to cover in my presentation,
+hopefully this can act as a supplement to it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Some of my recommendations here have what are known as &amp;ldquo;affiliate links&amp;rdquo; attached to them, which means I get paid if you start
+using the service. That&amp;rsquo;s because I&amp;rsquo;m a business major, and not because I wouldn&amp;rsquo;t recommend the service myself. If for whatever reason, you don&amp;rsquo;t want to have me receive compensation, &lt;a id=&quot;aff-off&quot; href=&quot;javascript:&quot;&gt;you can turn  off all affiliate links&lt;/a&gt;.&lt;/p&gt;
+
+&lt;a name=&quot;More.on.Domain.Names&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;More on Domain Names&lt;/h3&gt;
+
+&lt;a name=&quot;Acquiring.a.Domain&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;Acquiring a Domain&lt;/h4&gt;
+
+&lt;p&gt;Choosing a domain name can be tough. I own three that are just variations of my name. Keep in mind when purchasing:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sites with a &lt;code&gt;.com&lt;/code&gt; extension tend to be better respected than any
+other extension.&lt;/li&gt;
+&lt;li&gt;Try the shortest variation of your name first. If you can get your
+last name, &lt;strong&gt;buy it!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Random jumbles of characters are impossible to remember. Don&amp;rsquo;t just
+go for shortness.&lt;/li&gt;
+&lt;li&gt;Long domains make people less likely to type them out.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;My favorite place to go when exploring domain buying options is &lt;a href=&quot;http://domai.nr&quot;&gt;domai.nr&lt;/a&gt; which will show you if the name your trying for is taken and if there are any variations that might work.&lt;/p&gt;
+
+&lt;p&gt;When it comes time to purchase, I recommend &lt;a href=&quot;http://ref.name.com/aff_c?offer_id=3&amp;amp;aff_id=1953&quot; data-aff-off=&quot;http://name.com&quot; class=&quot;aff-on&quot;&gt;Name.com&lt;/a&gt;, but &lt;a href=&quot;http://namecheap.com&quot;&gt;NameCheap&lt;/a&gt; is another great option.&lt;/p&gt;
+
+&lt;a name=&quot;After.Purchase&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;After Purchase&lt;/h4&gt;
+
+&lt;p&gt;Once you have your domain, you’ll need to make it do what you want. By default your domain will go to a page of ads. To have it show your content, you’ll need to &amp;ldquo;point the DNS&amp;rdquo;. This will be explained to you by whomever is asking you for it. &lt;strong&gt;Make sure when you change the DNS, you delete the old settings.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;a name=&quot;More.on.Content.Management.Systems&quot;&gt;&lt;/a&gt;
+&lt;h3&gt;More on Content Management Systems&lt;/h3&gt;
+
+&lt;p&gt;Most of the CMSes I described have setup processes that are well explained. Below are the ones that are not.&lt;/p&gt;
+
+&lt;a name=&quot;WordPress.org&quot;&gt;&lt;/a&gt;
+&lt;h4&gt;WordPress.org&lt;/h4&gt;
+
+&lt;p&gt;Truly, to set up WordPress, there are three things you need:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A Domain Name&lt;/li&gt;
+&lt;li&gt;A Host&lt;/li&gt;
+&lt;li&gt;A Theme&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;a name=&quot;Domain.Name&quot;&gt;&lt;/a&gt;
+&lt;h5&gt;Domain Name&lt;/h5&gt;
+
+&lt;p&gt;You &lt;strong&gt;need&lt;/strong&gt; a domain name. Personally, I recommend &lt;a href=&quot;http://ref.name.com/aff_c?offer_id=3&amp;amp;aff_id=1953&quot; data-aff-off=&quot;http://name.com&quot; class=&quot;aff-on&quot;&gt;Name.com&lt;/a&gt;, but &lt;a href=&quot;http://namecheap.com&quot;&gt;NameCheap&lt;/a&gt; is another great option.&lt;/p&gt;
+
+&lt;a name=&quot;Host&quot;&gt;&lt;/a&gt;
+&lt;h5&gt;Host&lt;/h5&gt;
+
+&lt;p&gt;Choosing a host is an incredibly hard decision and most review sites are
+pretty biased. My personal recommendation depends on what the site is
+going to be used for, how much you’re going to use it, and how technical
+you are.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Low Traffic / Low Use: &lt;a href=&quot;http://freehostia.com&quot;&gt;FreeHostia&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;FreeHostia provides &lt;em&gt;free&lt;/em&gt; hosting from their &amp;ldquo;Chocolate&amp;rdquo; plan all they require is for you to have a domain name. I used their service for a few &lt;em&gt;very&lt;/em&gt; small personal projects. However, they put heavy restrictions on your account. I would not recommend them if you think you’ll have more than fifty visitors a day or need more than 250mb of space.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Higher Traffic / No High Tech Needs: &lt;a href=&quot;http://www.ipage.com/join/index.bml?AffID=647476&quot; data-aff-off=&quot;http://www.ipage.com/&quot; class=&quot;aff-on&quot;&gt;iPage&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;iPage can support higher traffic and provides decent support. I recommend them to all my non-technical clients. Their services works great unless you need to get fairly technical.&lt;/p&gt;
+
+&lt;p&gt;My friend’s &lt;a href=&quot;http://getfinish.com/&quot;&gt;app’s site&lt;/a&gt; is a good example of something hosted on iPage. It got a good deal of traffic when it launched and did not faulter.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Higher Traffic / High Tech Needs: &lt;a href=&quot;http://ref.webhostinghub.com/scripts/click.php?ref_id=nquinlan&amp;ad_id=0261610f&quot; data-aff-off=&quot;http://webhostinghub.com/&quot; class=&quot;aff-on&quot;&gt;WebHostingHub&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;WebHostingHub is who I use for my basic websites. They provide more technical tools (e.g. cPanel and cron jobs) but are also more expensive.&lt;/p&gt;
+
+&lt;p&gt;I’ve had few problems with their service while hosted with them and they do a great job of supporting the things I create. They didn’t falter when I directed more than 400 visitors a minute to them with &lt;a href=&quot;http://AppleMadeMoreMoneyThan.com&quot;&gt;AppleMadeMoreMoneyThan.com&lt;/a&gt;. You’ve likely seen them at work as &lt;a href=&quot;http://drunkwwu.com/&quot;&gt;Drunk WWU&lt;/a&gt;
+is hosted with them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;Once you have a host installing WordPress is a snap, they all have one-click-installs available, but if you prefer to do it as I
+demonstrated you can use my &lt;a href=&quot;http://thisishowyoumakeawebsite.com/MISA/download/wordpress-downloader.php&quot;&gt;download/unzip script for WordPress&lt;/a&gt;.&lt;/p&gt;
+
+&lt;a name=&quot;Themes&quot;&gt;&lt;/a&gt;
+&lt;h5&gt;Themes&lt;/h5&gt;
+
+&lt;p&gt;There are a bunch of &lt;em&gt;awesome&lt;/em&gt; free WordPress themes out there, you just need to do some digging. The &lt;a href=&quot;http://wordpress.org/extend/themes/&quot;&gt;WordPress Theme Repository&lt;/a&gt; has almost 1,700 free themes, the newer ones are of high quality, although many aren’t so great. You can also try searching Google for &lt;a href=&quot;http://google.com/search?q=smashing+mag+best+free+wordpress+themes&quot;&gt;&lt;code&gt;smashing mag best free wordpress themes&lt;/code&gt;&lt;/a&gt;. If you don’t want to dig through free themes, there are also paid themes. &lt;a href=&quot;http://themeforest.net/category/wordpress/?ref=nquinlan&quot; data-aff-off=&quot;http://themeforest.net/category/wordpress/&quot; class=&quot;aff-on&quot;&gt;ThemeForest&lt;/a&gt; provides many awesome themes for pretty low prices ($25–40). &lt;a href=&quot;http://www.woothemes.com/product-category/themes/&quot;&gt;WooThemes&lt;/a&gt;, has
+&lt;em&gt;very high quality&lt;/em&gt; themes for higher prices, they even have &lt;a href=&quot;http://www.woothemes.com/product-category/themes/?prod_cat%5B%5D=100&amp;amp;s=&amp;amp;post_type=product&quot;&gt;a few free ones&lt;/a&gt;.&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+window.onload = function () {
+  $(function() {
+        $(&quot;#aff-off&quot;).on(&quot;click keypress&quot;, function () {
+            $(this).addClass(&quot;aff-off&quot;);
+            $(&quot;.aff-on&quot;).each(function () {
+                $(this).attr(&quot;href&quot;, $(this).attr(&quot;data-aff-off&quot;) );
+                $(this).addClass(&quot;aff-off&quot;);
+            });
+        });
+    });
+};
+&lt;/script&gt;
+
+</description>
+        <pubDate>Sun, 10 Feb 2013 00:00:00 -0800</pubDate>
+        <link>/2013/02/10/developing-your-personal-website/</link>
+        <guid isPermaLink="true">/2013/02/10/developing-your-personal-website/</guid>
+      </item>
+    
+      <item>
+        <title>Using Social Media as a Non-Profit</title>
+        <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2012-12-21-using-social-media-as-a-non-profit/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;How can a non-profit organization use social networking to advance their cause? In this workshop, presenter Nicholas Quinlan will help you configure your social media accounts and teach you current strategies and best practices. You will learn social media do&amp;rsquo;s and dont&amp;rsquo;s and how to carefully evaluate whether social media is working for your organization.  Other social media platforms such as Pinterest and Google+ will be briefly touched upon.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/resources/2012-12-21-using-social-media-as-a-non-profit/social-media-for-non-profits.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This workshop was originally given in Boulder, CO for &lt;a href=&quot;http://bipr.org&quot;&gt;The Boulder Institute for Psychotherapy and Research&lt;/a&gt;. You may view the &lt;a href=&quot;/resources/2012-12-21-using-social-media-as-a-non-profit/social-media-for-non-profits.pdf&quot;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Dec 2012 00:00:00 -0800</pubDate>
+        <link>/2012/12/21/using-social-media-as-a-non-profit/</link>
+        <guid isPermaLink="true">/2012/12/21/using-social-media-as-a-non-profit/</guid>
+      </item>
+    
+  </channel>
+</rss>

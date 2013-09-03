@@ -1,0 +1,533 @@
+<html>
+  <head>
+    <meta content='Email: Driving Repeat Usage for Your App - Talks by Nick Quinlan' property='og:title' />
+    <title>Email: Driving Repeat Usage for Your App - Talks by Nick Quinlan</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/2013/09/05/email-driving-repeat-usage-for-your-app/' property='og:url' />
+  <meta content="{% slide 001-001 %}> 26% of users never open an app a second time. This talk will explore customer communication and ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'nicholasquinlan.com');
+  ga('send', 'pageview');
+
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><object id="logo" data="/images/nicholas-quinlan-logo.svg" type="image/svg+xml" fallback="/images/nicholas-quinlan-q.png"></object></a>
+<p><a href="/">Talks by Nick Quinlan</a></p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_blank" class="main" href="http://nicholasquinlan.com">About</a>
+  
+    <a target="_blank" class="main" href="http://twitter.com/YayNickQ">Twitter</a>
+  
+    <a target="_blank" class="main" href="mailto:nick@nicholasquinlan.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/nquinlan">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/2013/02/10/developing-your-personal-website/">
+        ‹
+      </a>
+    </div>
+  
+  
+</section>
+      <div class="content">
+        <article class="post">
+          <h1 class="upcase title">
+            <div class='date'>05 Sep 2013</div>
+            <a href="/2013/09/05/email-driving-repeat-usage-for-your-app/">Email: Driving Repeat Usage for Your App</a>
+          </h1>
+          <div class="wide slide-container"><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.001-001.png"  ></div>
+
+
+<blockquote><p>26% of users never open an app a second time. This talk will explore customer communication and engagement through email and give examples of how to apply them in a Parse app. Learn when to use email to connect with customers (and when to use something else). See code samples that use Cloud Code and Parse modules to painlessly send and receive email, while gaining additional insight into customer interactions through email analytics.</p></blockquote>
+
+<ul>
+<li><a href="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/email-driving-repeat-usage-for-your-app.pdf">Slides</a></li>
+</ul>
+
+
+<p>This talk was originally given at <a href="http://parsedeveloperday.com">Parse Developer Day</a> in San Francisco.  It&rsquo;s been adapted to text below.</p>
+
+<div class="wide slide-container"><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.002-001.png"  ></div>
+
+
+<p><a href="http://nicholasquinlan.com">Hi, I&rsquo;m Nick.</a> I&rsquo;m a Developer Evangelist for <a href="http://sendgrid.com/">SendGrid</a>. Before that I worked at <a href="http://www.ethoseo.com/">ethoseo internet marketing</a> helping some of the world&rsquo;s largest brands use internet properties to better connect with their customers.</p>
+
+<p><strong>A Note On SendGrid</strong>: Naturally, as a SendGrid Developer Evangelist all code samples use SendGrid, however, as Parse Modules are well abstracted you can <em>very</em> easily switch out <code>SendGrid.send</code> for another email company&rsquo;s method.</p>
+
+<a name="Notification.Styles"></a>
+<h2>Notification Styles</h2>
+
+<div class="wide slide-container"><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.007-001.png"  ></div>
+
+
+<p>On a mobile platform like iOS or Android you have a wide variety of notifications methods to pick from. Which naturally leads to the question, <em>&ldquo;Which notification style should I use?&rdquo;</em></p>
+
+<p>To answer that, you need to know the strengths and weaknesses of each. Since I&rsquo;m talking about emails, I&rsquo;ll tell you a little about that.</p>
+
+<blockquote><p>“Today, if you want to drive retention and repeat usage, there isn&rsquo;t a better way to do it than email.”
+&mdash; <a href="http://avc.com">Fred Wilson</a>, Union Square Ventures</p></blockquote>
+
+<a name="Strengths"></a>
+<h3>Strengths</h3>
+
+<ul>
+<li><strong>Cross Platform</strong> &ndash; Email is on every device today, meaning no matter where I am, as your user, I can get email.</li>
+<li><strong>Within Existing Workflow</strong> &ndash; I already read my email, which means I&rsquo;m not changing anything to read <em>your</em> email.</li>
+<li><strong>Referenceable</strong> &ndash; Email isn&rsquo;t ephemeral, like notifications, meaning I can go back and reference it. That&rsquo;s especially useful for things like receipts.</li>
+<li><strong>Preferred Channel</strong> &ndash; A <a href="http://pages.exacttarget.com/SFF14-US">2012 Exact Target Study</a> found that 77% of consumers want business communications to come through email, rather than another channel.</li>
+</ul>
+
+
+<a name="Weaknesses"></a>
+<h3>Weaknesses</h3>
+
+<ul>
+<li><strong>Outside Your App</strong> &ndash; As email is outside your app, by forcing me to use email, you&rsquo;re forcing me to leave your app. <span class="muted">(and I may never come back)</span></li>
+<li><strong>Cross Platform</strong> &ndash; Being cross-platform is also a weakness for email, as you don&rsquo;t know what capabilities users will have when they open their email.</li>
+<li><strong>Non-Immediate</strong> &ndash; Despite what it might feel like, I&rsquo;m not always in my inbox, so if an email requires immediate action, I might not be there to take it.</li>
+<li><strong>Ignorable</strong> &ndash; Since everyone get so much email, it&rsquo;s easy to ignore, and I might miss your notification.</li>
+</ul>
+
+
+<a name="Key.Uses"></a>
+<h3>Key Uses</h3>
+
+<p>Email has several key uses, where I believe it outshines every other notification method.</p>
+
+<ul>
+    <li>Platform Switches</li>
+    <li>Receipts</li>
+    <li>Messaging</li>
+    <li><a href="#Onboarding.Emails">Onboarding</a></li>
+    <li><a href="#Re-Engagement.Emails">Re-engagement</a></li>
+</ul>
+
+
+<a name="Great.Email"></a>
+<h3>Great Email</h3>
+
+<p>Knowing that email is <em>awesome</em> is good, but to take full advantage of it you need to know what makes a &ldquo;Great Email&rdquo;.</p>
+
+<div class="wide slide-container"><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.020-001.png"  ></div>
+
+
+<a name="Personalization"></a>
+<h4>Personalization</h4>
+
+<p>Personalizing an email can have awesome results. However, if you personalize the wrong email you might have the wrong kind of results: <span style="color:#A30B00">negative.</span></p>
+
+<ul>
+<li><a href="http://bit.ly/18MIJ0j">Experian found</a> that <strong>transactional</strong> emails with subject line personalization received <em>22% higher</em> open rates.</li>
+<li><a href="http://bit.ly/16AtY0l">MailerMail found</a> <strong>marketing</strong> emails with personalized subject lines received <em>55% lower</em> open rates.</li>
+</ul>
+
+
+<p>But personalizing the subject line with a name isn&rsquo;t enough. It&rsquo;s better to personalize emails more with things like recommendations unique to the users.</p>
+
+<a name="Direct.Link"></a>
+<h4>Direct Link</h4>
+
+<p>When you send a user a link about an event <em>make sure</em> to have a link in the email bring them to a page or app screen that relates <em>directly</em> to the event.</p>
+
+<a name="How.To.Directly.Link.to.Your.App.From.An.Email"></a>
+<h5>How To Directly Link to Your App From An Email</h5>
+
+<p>As email is cross platform you need to ensure users are shown links that will get them to the right place: on mobile that means your app and on a desktop your website. <strong>So how do you do that?</strong></p>
+
+<p>You can use CSS to hide all mobile links on desktop devices and vice-versa for all desktop links.</p>
+
+<p>Hiding mobile links is seen below:</p>
+
+<p><figure class="code" id="code-block-b156fc8549eb8efa2468e0aa423868ee"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">//</span> <span class="nt">By</span> <span class="nt">default</span> <span class="nt">hide</span> <span class="nt">all</span> <span class="nt">mobile</span> <span class="nt">elements</span>
+</span><span class='line'><span class="nc">.mobile-only</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">//</span> <span class="nt">Assume</span> <span class="nt">that</span> <span class="nt">everything</span> <span class="nt">under</span> <span class="nt">iPhone</span> <span class="nt">width</span> <span class="nt">is</span> <span class="nt">a</span> <span class="nt">mobile</span> <span class="nt">device</span>
+</span><span class='line'><span class="k">@media</span> <span class="nt">only</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">480px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">//</span> <span class="nt">Display</span> <span class="nt">mobile</span> <span class="nt">elements</span> <span class="nt">on</span> <span class="nt">mobile</span> <span class="nt">devices</span>
+</span><span class='line'>    <span class="nc">.mobile-only</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Once the CSS is in place you can place mobile links to your app around your email as long as they&rsquo;re given the class <code>mobile-only</code>:</p>
+
+<p><figure class="code" id="code-block-de787d9e7e9a194748de1d6a6589b37f"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;mobile-only&quot;</span> <span class="na">href=</span><span class="s">&quot;YourUrlScheme://coolfeature&quot;</span><span class="nt">&gt;</span>Check out this cool feature!<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>However, there are a couple problems with that:</p>
+
+<ol>
+<li>The media queries used rely on size and not actually capability, so if someone has a small window on their desktop they&rsquo;ll see your mobile links.</li>
+<li>Media queries don&rsquo;t work in all mail clients, so some may still show the mobile links.</li>
+</ol>
+
+
+<p>You can counteract this by doing some fancy web code. Shown below with <a href="https://www.parse.com/docs/cloud_code_guide">Parse Cloud Code</a> with <a href="https://www.parse.com/docs/cloud_code_guide#started-webapp">Express.js</a> loaded.</p>
+
+<p>The following code that would be placed in <code>cloud/app.js</code> renders the open template (<code>cloud/views/open.hjs</code>):</p>
+
+<p><figure class="code" id="code-block-78c329bb82dd127751d7da015055dc8b"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="c1">// Setup a route for &quot;/open/:location&quot; (e.g. &quot;/open/YayNickQ/timeline&quot;)</span>
+</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/open/:location&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Render the open template</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">location</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">location</span> <span class="p">},</span> <span class="nx">myCallback</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The open template (<code>cloud/views/open.hjs</code>) mentioned in the snippet above is shown below. It provides some context and forwards users on to the app.</p>
+
+<p><figure class="code" id="code-block-1e97ad45917d86d11e6419e312aa3df5"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!&mdash; Provide some context about the app and what&#39;s happening &mdash;&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>Super Cool App is Opening<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>If you don&#39;t own it please <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://itunes.apple.com/us/app/myapp/id31415926&quot;</span><span class="nt">&gt;</span>download it<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="c1">// Attempt to open your url scheme</span>
+</span><span class='line'>    <span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&quot;YourUrlScheme://&quot;</span> <span class="o">+</span> <span class="o">&lt;%=</span> <span class="nx">location</span> <span class="o">%&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The code above could be modified to revert back to a desktop website if the user isn&rsquo;t forwarded in a few seconds. ex:<br/>
+<code>setTimeout(function () { document.location.href = + &lt;%= desktoplocation %&gt; }, 3000);</code></p>
+
+<p>Once the code is setup you can then place links to it in your email:</p>
+
+<p><figure class="code" id="code-block-fb663c0a8899f7431421e80c94f7fe00"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;mobile-only&quot;</span> <span class="na">href=</span><span class="s">&quot;http://your-custom-subdomain.parseapp.com/open/coolfeature&quot;</span><span class="nt">&gt;</span>Check out this cool feature!<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<a name="One.Call.To.Action"></a>
+<h4>One Call To Action</h4>
+
+<p>Finally, to make a great email you need to ensure you only have <strong>one</strong> call to action, not several. That way you force users to do what you want.</p>
+
+<a name="User.Engagement.Emails"></a>
+<h2>User Engagement Emails</h2>
+
+<p>Now that you have some understanding of good emails, it&rsquo;s time to apply that in emails that ensure users will re-engage with your app.</p>
+
+<a name="Onboarding.Emails"></a>
+<h3>Onboarding Emails</h3>
+
+<div class="wide slide-container"><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.030-001.png"  ></div>
+
+
+<p>When a user comes to your app the first time, they have a <a href="www.localytics.com/blog/2011/first-impressions-matter-26-percent-of-apps-downloaded-used-just-once/">26% chance</a> of closing it and never coming back.</p>
+
+<p>By emailing them shortly after their first open you get the opportunity to remind them of your app.</p>
+
+<p>When making one of these emails you need to keep in mind when your app is most useful. <em>Is there a time of day or year when your app is more useful? Does your app become more useful with more data?</em> Email users when that condition occurs!</p>
+
+<a name="How.To.Onboard.New.Users.Using.Cloud.Code"></a>
+<h4>How To Onboard New Users Using Cloud Code</h4>
+
+<p>Once you establish what condition will be best for getting users into the app, it&rsquo;s relatively simple to have Parse Cloud Code send out an email when that condition is met.</p>
+
+<p>Say for example your app is useful at 9:00am, you can setup an email to be sent to new users every morning by writing the cloud code below. _(Again, this requires <a href="https://www.parse.com/docs/cloud_code_guide#started-webapp">Express.js</a> to be loaded.</p>
+
+<p class="muted">Similar code can be found in the <a href="https://www.parse.com/docs/cloud_code_guide#webhooks">Parse documentation under &#8220;Custom Webhooks&#8221;</a></p>
+
+
+<p><figure class="code" id="code-block-58c8bfc8a41f0e547658fe41ffc588e0"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/reengage&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1">// Require basic authentication so only people/services you authorize can call your private endpoint</span>
+</span><span class='line'>  <span class="nx">express</span><span class="p">.</span><span class="nx">basicAuth</span><span class="p">(</span><span class="s1">&#39;USERNAME_OF_YOUR_CHOICE&#39;</span><span class="p">,</span> <span class="s1">&#39;PASSWORD_OF_YOUR_CHOICE&#39;</span><span class="p">),</span>
+</span><span class='line'>  <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Use the Parse Master Key to edit user records without being logged in</span>
+</span><span class='line'>    <span class="nx">Parse</span><span class="p">.</span><span class="nx">Cloud</span><span class="p">.</span><span class="nx">useMasterKey</span><span class="p">();</span>
+</span><span class='line'>      <span class="c1">// Initiate a Parse query for the Parse.User object</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Parse</span><span class="p">.</span><span class="nx">Query</span><span class="p">(</span><span class="nx">Parse</span><span class="p">.</span><span class="nx">User</span><span class="p">);</span>
+</span><span class='line'>      <span class="c1">// Check to see if the user has been onboarded</span>
+</span><span class='line'>      <span class="nx">query</span><span class="p">.</span><span class="nx">equalTo</span><span class="p">(</span><span class="s2">&quot;onboarded&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">query</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">uninitiated</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// Loop through each non-onboarded user</span>
+</span><span class='line'>          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">uninitiated</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">uninitiated</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>            <span class="c1">// Send the user an email onboarding them</span>
+</span><span class='line'>            <span class="nx">SendGrid</span><span class="p">.</span><span class="nx">sendEmail</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">to</span><span class="o">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">getEmail</span><span class="p">(),</span>
+</span><span class='line'>              <span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;you@example.com&quot;</span><span class="p">,</span>
+</span><span class='line'>              <span class="nx">subject</span><span class="o">:</span> <span class="s2">&quot;Welcome to my app!&quot;</span><span class="p">,</span>
+</span><span class='line'>              <span class="nx">html</span><span class="o">:</span> <span class="nx">generateWelcomeEmailBody</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>            <span class="c1">// Save that the user has been onboarded</span>
+</span><span class='line'>            <span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span><span class="s2">&quot;onboarded&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Once this webhook is setup, you&rsquo;ll need to call it every day at 9:00am. Currently (2013-09-05) Parse Cloud Code does not allow for scheduling, so you must go to an outside service for this to run.</p>
+
+<p>Luckily there are several services that allow for this, a few to consider are:</p>
+
+<ul>
+<li><a href="http://www.easycron.com">EasyCron</a></li>
+<li><a href="https://www.setcronjob.com/">SetCronJob</a></li>
+<li><a href="http://cronless.com/">CronLess</a></li>
+</ul>
+
+
+<p>After picking out a service you&rsquo;ll give it the URL of your Parse App&rsquo;s Custom Webhook. Something like:<br/>
+<code>http://USERNAME_OF_YOUR_CHOICE:PASSWORD_OF_YOUR_CHOICE@your-subdomain.parseapp.com/onboardNewUsers</code></p>
+
+<p><strong>Note:</strong> Pay attention to the timezone your user is in. 9am PST is 3am in Australia.</p>
+
+<a name="Re-Engagement.Emails"></a>
+<h3>Re-Engagement Emails</h3>
+
+<div class="wide slide-container"><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/slides/s/slide.036-001.png"  ></div>
+
+
+<p>Re-Engagement is a similar ball game. Users may abandon your app after trying it, <em>or even</em> after using it for a while. So you&rsquo;re left with the question: how do you get them back? Re-enegagement emails remind users of your app and prompt them to come back.</p>
+
+<p>Often to get users to re-engage you&rsquo;ll need to show them the benefit they&rsquo;ll get for doing so. Many apps will show users they&rsquo;re missing content or friends. Others that sell products will give discounts.</p>
+
+<a name="How.to.Re-Engage.Users.with.Cloud.Code"></a>
+<h4>How to Re-Engage Users with Cloud Code</h4>
+
+<p>Once you&rsquo;ve decided to get users to re-engage, you need to code it.</p>
+
+<p>You&rsquo;ll notice this code looks very similar to the onboarding code. The only difference is here you&rsquo;ve chosen a &ldquo;disengaged threshold&rdquo;, a point where you classify users as disengaged. You&rsquo;ll then need to re-engage them.</p>
+
+<p><figure class="code" id="code-block-7cec443a1b55930ac01e68ebbaa72776"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/reengage&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="c1">// Require basic authentication so only people/services you authorize can call your private endpoint</span>
+</span><span class='line'>  <span class="nx">express</span><span class="p">.</span><span class="nx">basicAuth</span><span class="p">(</span><span class="s1">&#39;USERNAME_OF_YOUR_CHOICE&#39;</span><span class="p">,</span> <span class="s1">&#39;PASSWORD_OF_YOUR_CHOICE&#39;</span><span class="p">),</span>
+</span><span class='line'>  <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Use the Parse Master Key to edit user records without being logged in</span>
+</span><span class='line'>    <span class="nx">Parse</span><span class="p">.</span><span class="nx">Cloud</span><span class="p">.</span><span class="nx">useMasterKey</span><span class="p">();</span>
+</span><span class='line'>      <span class="c1">// Initiate a Parse query for the Parse.User object</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">query</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Parse</span><span class="p">.</span><span class="nx">Query</span><span class="p">(</span><span class="nx">Parse</span><span class="p">.</span><span class="nx">User</span><span class="p">);</span>
+</span><span class='line'>      <span class="c1">// Check if the user has been &quot;rengaged already&quot;</span>
+</span><span class='line'>      <span class="c1">// Note: You&#39;d probably want to do something a little more advanced</span>
+</span><span class='line'>      <span class="nx">query</span><span class="p">.</span><span class="nx">equalTo</span><span class="p">(</span><span class="s2">&quot;reengaged&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">});</span>
+</span><span class='line'>      <span class="c1">// Check if the user is &quot;disengaged&quot; (i.e. they haven&#39;t opened your app in over a month)</span>
+</span><span class='line'>      <span class="c1">// Note: This assumes you&#39;ve setup your app to log the date to User.lastOpened whenever the app is opened</span>
+</span><span class='line'>      <span class="c1">// Also: lastMonth() is not a real function, you can make a similar function as so:</span>
+</span><span class='line'>      <span class="c1">//       http://stackoverflow.com/questions/605113/find-first-day-of-previous-month-in-javascript</span>
+</span><span class='line'>      <span class="c1">//       However, you&#39;d probably want something a little better suited to your app.</span>
+</span><span class='line'>      <span class="c1">//       Using your analytics, you can find a time period where users disengaged from your app don&#39;t come back.</span>
+</span><span class='line'>      <span class="nx">query</span><span class="p">.</span><span class="nx">lessThanOrEqualTo</span><span class="p">(</span><span class="s2">&quot;lastOpened&quot;</span><span class="p">,</span> <span class="nx">lastMonth</span><span class="p">()});</span>
+</span><span class='line'>      <span class="nx">query</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">disengaged</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="c1">// Loop through each disengaged user</span>
+</span><span class='line'>          <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">disengaged</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">disengaged</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span><span class='line'>            <span class="c1">// Send the user an email re-engaging them</span>
+</span><span class='line'>            <span class="nx">SendGrid</span><span class="p">.</span><span class="nx">sendEmail</span><span class="p">({</span>
+</span><span class='line'>              <span class="nx">to</span><span class="o">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">getEmail</span><span class="p">(),</span>
+</span><span class='line'>              <span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;you@example.com&quot;</span><span class="p">,</span>
+</span><span class='line'>              <span class="nx">subject</span><span class="o">:</span> <span class="s2">&quot;We Haven’t Seen You In A While&quot;</span><span class="p">,</span>
+</span><span class='line'>              <span class="nx">html</span><span class="o">:</span> <span class="nx">generateReEngagementEmailBody</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">});</span>
+</span><span class='line'>            <span class="c1">// Save the user has been re-engaged to prevent spamming them</span>
+</span><span class='line'>            <span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span><span class="s2">&quot;reengaged&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">});</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">});</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Here, again, you&rsquo;ll need to use a cron service to trigger the webhook, daily (or whenever you decide).</p>
+
+<a name="Tools"></a>
+<h2>Tools</h2>
+
+<p>Much of engaging users is understanding them and interacting with them in the right way. For that you&rsquo;ll need the right tools.</p>
+
+<p><a href="http://google.com/analytics">Google Analytics</a> gives awesome analytics power for apps and websites though Universal Analytics. However, GA&rsquo;s ToS prevents you from identifying individual users, a necessary step to reengagement. Both <a href="https://mixpanel.com/">MixPanel</a> and <a href="https://www.kissmetrics.com">KissMetrics</a> allow individual user tracking (and when combined with Parse User data can be quite powerful). <a href="http://vessel.io">Vessel</a> gives some analytics, advanced crash reporting, and allows for AB Testing which is another way to further improve user engagement.</p>
+
+<p><a href="https://www.userfox.com/">Userfox</a> is a service to  keep an eye on. They facilitate welcome emails and all sorts of other marketing strategies with minimal additional code. Currently they do not support iOS or Android. <em>However</em>, using their <a href="">API</a> you could hack it to make iOS/Android work.</p>
+
+<p>Finally, a plug: you should definitely <a href="http://sendgrid.com">use SendGrid</a> for email.</p>
+
+<a name="Demo.App"></a>
+<h2>Demo App</h2>
+
+<p><img src="/resources/2013-09-05-email-driving-repeat-usage-for-your-app/FollowAppIcon.png" style="float: right; padding: 0 0 20px 20px;"> My coworker Kunal and I created an app to give a better idea of how Parse and SendGrid interact. It&rsquo;s called FollowApp.</p>
+
+<p>FollowApp is yet another app for exchanging contact information. However, rather than trying to substitute cards, it sends a templated email with a little information to the people you meet at events.</p>
+
+<p>The app then notifies you when someone opens the email you sent.</p>
+
+<p>FollowApp works by storing all data in Parse Objects and then sending email upon creating a new contact. It utilizes the SendGrid Events Webhook and Parse&rsquo;s Notification platform to notify users of received email.</p>
+
+<p>You will be able to find the code on <a href="https://github.com/nquinlan/follow-app">Github</a> when iOS7 comes out.</p>
+
+<a name="Additional.Resources"></a>
+<h2>Additional Resources</h2>
+
+<ul>
+<li>Kunal wrote a fantastic <a href="http://blog.sendgrid.com/create-an-ios-app-with-parse-platform-and-sendgrid/">post on the SendGrid blog explaining Parse, Cloud Code, and the SendGrid Module</a></li>
+<li><a href="https://www.parse.com/docs/cloud_code_guide">Parse Cloud Code Guide</a></li>
+<li><a href="https://www.parse.com/docs/cloud_modules_guide#sendgrid">Parse Cloud Code SendGrid Module Guide</a></li>
+</ul>
+
+
+          <footer class="wide">
+	<div class="signoff">
+		<img src="/images/nicholas-quinlan.jpg" alt="Nick Quinlan">
+		<p>Nick Quinlan is a Developer Evangelist for SendGrid where he works to makes developers lives easier.</p>
+		<div style="clear:both"></div>
+	</div>
+</footer>
+
+
+        </article>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_blank" class="main" href="http://nicholasquinlan.com">About</a>
+  
+    <a target="_blank" class="main" href="http://twitter.com/YayNickQ">Twitter</a>
+  
+    <a target="_blank" class="main" href="mailto:nick@nicholasquinlan.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/nquinlan">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+	<p class="muted">built with <a href="http://jekyllrb.com/">Jekyll</a> based upon the <a href="http://github.com/muan/scribble">Scribble theme</a></p>
+</footer>
+  </body>
+</html>
