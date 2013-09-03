@@ -17,7 +17,7 @@ This talk was originally given at [Parse Developer Day](http://parsedeveloperday
 
 [Hi, I'm Nick.](http://nicholasquinlan.com) I'm a Developer Evangelist for [SendGrid](http://sendgrid.com/). Before that I worked at [ethoseo internet marketing](http://www.ethoseo.com/) helping some of the world's largest brands use internet properties to better connect with their customers.
 
-**A Note On SendGrid**: Naturally, as a SendGrid Developer Evangelist all code samples use SendGrid, however, as Parse Modules are well abstracted you can _very_ easily switch out `SendGrid.send` for another email company's method.
+**A Note On SendGrid**: Naturally, as a SendGrid Developer Evangelist all code samples use SendGrid, however, as Parse Modules are well abstracted you can _very_ easily switch out `SendGrid.sendEmail` for another email company's method.
 
 ## Notification Styles
 {% slide 007-001 %}
