@@ -3,6 +3,9 @@
 <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+{% if page.styled %}
+<link href='{% resource_dir %}style.css' rel='stylesheet' type='text/css' />
+{% endif %}
 <!-- - -->
 <script src='/javascripts/jquery.js' type='text/javascript'></script>
 <script src='/javascripts/pd.js' type='text/javascript'></script>
@@ -11,7 +14,6 @@
 <!-- - -->
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
 <meta content='text/html; charset=utf-8' http-equiv='content-type' />
-<meta content="http://muan.co/images/og.png" property="og:image" />
 <meta content="{{ site.facebook_appid }}" property="fb:app_id" />
 {% if page.date %}
   <meta content='{{ site.url }}{{ page.url }}' property='og:url' />

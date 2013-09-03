@@ -10,16 +10,16 @@
       {% include links.html %}
       {% include pages.html %}
       <div class="content">
-        <section class='post'>
-          <h1 class="upcase">
+        <article class="post">
+          <h1 class="upcase title">
             <div class='date'>{{ page.date | date_to_string }}</div>
-            {{ page.title }}
+            <a href="{{ page.url }}">{{ page.title }}</a>
           </h1>
           {{ content }}
           {% include signoff.html %}
 
 
-        </section>
+        </article>
       </div>
       {% if page.share == 'y' %}
         {% include share.html %}
