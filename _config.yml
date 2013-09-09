@@ -22,6 +22,7 @@ links:
     external:     true
 pygments:         true
 permalink:        pretty
+google_analytics: UA-24562284-3
 markdown:         rdiscount
 rdiscount:
   extensions:     [smart,generate_toc]
