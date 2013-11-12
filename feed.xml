@@ -7,6 +7,27 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Content-Transfer-Encoding: understandable, Communicating Your Code</title>
+        <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-11-13-communicating-your-code/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;As developers we talk about code every day: to technical people, non-technical people, people who know more about systems than us, and people who know less. Each has different frames of reference and must be told things differently. This talk will explore methods of communication for each type of audience and the processes behind them. Understand how to sell your ideas to your boss, explain what you do to your parents, teach other developers, and solicit feedback better.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/resources/2013-11-13-communicating-your-code/communicating-your-code.pdf&quot;&gt;Current Slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.slideshare.net/sendgrid/webcast-communicating-your-code&quot;&gt;Previous Slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://vimeo.com/78204412&quot;&gt;Previous Recording&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This talk was originally given as &lt;a href=&quot;http://go.sendgrid.com/WebinarCommincatingYourCode_GettingStartedWithEmailDeliverability_Download.html&quot;&gt;a SendGrid webinar&lt;/a&gt; and then adapted further for &lt;a href=&quot;http://venturebeat.com/events/devbeat2013&quot;&gt;DevBeat 2013&lt;/a&gt; in San Francisco.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 13 Nov 2013 00:00:00 -0800</pubDate>
+        <link>/2013/11/13/communicating-your-code/</link>
+        <guid isPermaLink="true">/2013/11/13/communicating-your-code/</guid>
+      </item>
+    
+      <item>
         <title>Disrupt Nothing: The Importance of Getting Into Workflows</title>
         <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-10-25-disrupt-nothing-the-Importance-of-getting-into-workflows/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
 
