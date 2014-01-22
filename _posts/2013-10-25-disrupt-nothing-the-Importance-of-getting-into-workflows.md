@@ -14,4 +14,4 @@ alias:  [/future-stack-2013, /fs13]
 
 This talk was originally given at [Future Stack 2013](http://futurestack.io) in San Francisco.
 
-<div class="wide slide-container"><iframe width="597" height="336" src="//www.youtube.com/embed/b5P3EEOV_oc?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<div class="wide video-container"><iframe width="597" height="336" src="//www.youtube.com/embed/b5P3EEOV_oc?rel=0" frameborder="0" allowfullscreen></iframe></div>

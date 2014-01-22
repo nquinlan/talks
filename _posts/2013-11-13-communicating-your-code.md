@@ -11,5 +11,8 @@ alias:  [/devbeat2013,/communicating-code]
 - [Current Slides]({% resource_dir %}communicating-your-code.pdf)
 - [Previous Slides](http://www.slideshare.net/sendgrid/webcast-communicating-your-code)
 - [Previous Recording](http://vimeo.com/78204412)
+- [Summary Article](http://blog.pluralsight.com/communicate-code-tip)
+
+<div class="wide video-container"><iframe src="//player.vimeo.com/video/78204412" width="599" height="337" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
 
 This talk was originally given as [a SendGrid webinar](http://go.sendgrid.com/WebinarCommincatingYourCode_GettingStartedWithEmailDeliverability_Download.html) and then adapted further for [DevBeat 2013](http://venturebeat.com/events/devbeat2013) in San Francisco.
