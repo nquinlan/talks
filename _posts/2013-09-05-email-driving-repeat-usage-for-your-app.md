@@ -11,8 +11,6 @@ alias:  /parse-dev-day-2013
 - [Slides]({% resource_dir %}email-driving-repeat-usage-for-your-app.pdf)
 - [Video](http://blog.parse.com/2014/01/22/driving-repeat-usage-for-your-app/)
 
-<div class="wide video-container"><iframe width="599" height="337" src="//www.youtube-nocookie.com/embed/ExKoluAdzKE?rel=0" frameborder="0" allowfullscreen></iframe></div>
-
 This talk was originally given at [Parse Developer Day](http://parsedeveloperday.com) in San Francisco.  It's been adapted to text below.
 
 {% slide 002-001 %}
