@@ -7,6 +7,25 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Email Best Practices</title>
+        <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2014-01-22-email-best-practices/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;Sending good email is hard, and maintaining a good sender reputation is taxing. In this talk you&amp;rsquo;ll learn simple actionable Dos and Don'ts of sending email.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/resources/2014-01-22-email-best-practices/email-best-practices.pdf&quot;&gt;SFRails Slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This talk was originally given at the &lt;a href=&quot;http://www.meetup.com/SFRails/events/149935932/&quot;&gt;SFRails Meetup&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 Jan 2014 00:00:00 -0800</pubDate>
+        <link>/2014/01/22/email-best-practices/</link>
+        <guid isPermaLink="true">/2014/01/22/email-best-practices/</guid>
+      </item>
+    
+      <item>
         <title>Content-Transfer-Encoding: understandable, Communicating Your Code</title>
         <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2013-11-13-communicating-your-code/slides/s/slide.001-001.png&quot;  &gt;&lt;/div&gt;
 
@@ -17,7 +36,11 @@
 &lt;li&gt;&lt;a href=&quot;/resources/2013-11-13-communicating-your-code/communicating-your-code.pdf&quot;&gt;Current Slides&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.slideshare.net/sendgrid/webcast-communicating-your-code&quot;&gt;Previous Slides&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://vimeo.com/78204412&quot;&gt;Previous Recording&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.pluralsight.com/communicate-code-tip&quot;&gt;Summary Article&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+
+&lt;div class=&quot;wide video-container&quot;&gt;&lt;iframe src=&quot;//player.vimeo.com/video/78204412&quot; width=&quot;599&quot; height=&quot;337&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This talk was originally given as &lt;a href=&quot;http://go.sendgrid.com/WebinarCommincatingYourCode_GettingStartedWithEmailDeliverability_Download.html&quot;&gt;a SendGrid webinar&lt;/a&gt; and then adapted further for &lt;a href=&quot;http://venturebeat.com/events/devbeat2013&quot;&gt;DevBeat 2013&lt;/a&gt; in San Francisco.&lt;/p&gt;
@@ -36,10 +59,14 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/resources/2013-10-25-disrupt-nothing-the-Importance-of-getting-into-workflows/disrupt-nothing-the-Importance-of-getting-into-workflows.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.youtube.com/watch?v=b5P3EEOV_oc#t=68&quot;&gt;Video&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
 &lt;p&gt;This talk was originally given at &lt;a href=&quot;http://futurestack.io&quot;&gt;Future Stack 2013&lt;/a&gt; in San Francisco.&lt;/p&gt;
+
+&lt;div class=&quot;wide video-container&quot;&gt;&lt;iframe width=&quot;597&quot; height=&quot;336&quot; src=&quot;//www.youtube.com/embed/b5P3EEOV_oc?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
 </description>
         <pubDate>Fri, 25 Oct 2013 00:00:00 -0700</pubDate>
         <link>/2013/10/25/disrupt-nothing-the-Importance-of-getting-into-workflows/</link>
@@ -55,7 +82,11 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/resources/2013-09-05-email-driving-repeat-usage-for-your-app/email-driving-repeat-usage-for-your-app.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.parse.com/2014/01/22/driving-repeat-usage-for-your-app/&quot;&gt;Video&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+
+&lt;div class=&quot;wide video-container&quot;&gt;&lt;iframe width=&quot;599&quot; height=&quot;337&quot; src=&quot;//www.youtube-nocookie.com/embed/ExKoluAdzKE?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This talk was originally given at &lt;a href=&quot;http://parsedeveloperday.com&quot;&gt;Parse Developer Day&lt;/a&gt; in San Francisco.  It&amp;rsquo;s been adapted to text below.&lt;/p&gt;
