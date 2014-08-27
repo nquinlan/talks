@@ -7,6 +7,30 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Building for Developers</title>
+        <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2014-08-28-building-for-developers/slides/s/slide.001.png&quot;  &gt;&lt;/div&gt;
+
+
+&lt;a name=&quot;Increasing.the.Awesome.in.Your.Open.Source.or.API.Platform&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Increasing the Awesome in Your Open Source or API Platform&lt;/h2&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Every day we use developer tools and might even create a few. API companies are one of the “exciting new things” in The Valley and libraries are being built and open sourced like crazy. However, creating a developer tool can be hard. It requires a lot of thought be put into API design, documentation, and more. After building one you must put a great deal of time into maintaining it, making architectural decisions, and managing its community.&lt;/p&gt;
+
+&lt;p&gt;This talk explores some best practices in creating and maintaining developer tools, discovered through the creation and maintenance of open source libraries and put into action at major API companies. It will discuss common pitfalls in developer tools and uncover methods to sustainably develop libraries and APIs.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/resources/2014-08-28-building-for-developers/building-for-developers.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;This talk was originally given at the &lt;a href=&quot;http://devlink.net/&quot;&gt;devLink&lt;/a&gt; in Chattanooga, TN.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Aug 2014 00:00:00 -0400</pubDate>
+        <link>/2014/08/28/building-for-developers/</link>
+        <guid isPermaLink="true">/2014/08/28/building-for-developers/</guid>
+      </item>
+    
+      <item>
         <title>GET api/tools</title>
         <description>&lt;div class=&quot;wide slide-container&quot;&gt;&lt;img src=&quot;/resources/2014-05-12-get-api-tools/slides/s/slide.001.png&quot;  &gt;&lt;/div&gt;
 
@@ -27,9 +51,9 @@
 &lt;h3&gt;Web APIs&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en&quot;&gt;Postman&lt;/a&gt; - REST Client as a Chrome Extension&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://runscope.com&quot;&gt;Runscope&lt;/a&gt; - API Debugging Tools&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://unirest.io&quot;&gt;Unirest&lt;/a&gt; - Common REST Interface API Library&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en&quot;&gt;Postman&lt;/a&gt; &amp;ndash; REST Client as a Chrome Extension&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://runscope.com&quot;&gt;Runscope&lt;/a&gt; &amp;ndash; API Debugging Tools&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://unirest.io&quot;&gt;Unirest&lt;/a&gt; &amp;ndash; Common REST Interface API Library&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -37,13 +61,13 @@
 &lt;h3&gt;Webhooks&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://requestb.in&quot;&gt;Request Bin&lt;/a&gt; - Storage and inspector for HTTP Requests&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://ngrok.com/&quot;&gt;ngrok&lt;/a&gt; - Inspectable tunnels to your machine&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://reflector.io/&quot;&gt;Reflector.io&lt;/a&gt; - Super nifty webhook tools&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://requestb.in&quot;&gt;Request Bin&lt;/a&gt; &amp;ndash; Storage and inspector for HTTP Requests&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ngrok.com/&quot;&gt;ngrok&lt;/a&gt; &amp;ndash; Inspectable tunnels to your machine&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://reflector.io/&quot;&gt;Reflector.io&lt;/a&gt; &amp;ndash; Super nifty webhook tools&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Mon, 12 May 2014 00:00:00 -0600</pubDate>
+        <pubDate>Mon, 12 May 2014 00:00:00 -0400</pubDate>
         <link>/2014/05/12/get-api-tools/</link>
         <guid isPermaLink="true">/2014/05/12/get-api-tools/</guid>
       </item>
@@ -60,7 +84,7 @@
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Fri, 07 Feb 2014 00:00:00 -0700</pubDate>
+        <pubDate>Fri, 07 Feb 2014 00:00:00 -0500</pubDate>
         <link>/2014/02/07/an-introduction-to-everything-i-wish-i-always-knew-about-development/</link>
         <guid isPermaLink="true">/2014/02/07/an-introduction-to-everything-i-wish-i-always-knew-about-development/</guid>
       </item>
@@ -79,7 +103,7 @@
 
 &lt;p&gt;This talk was originally given at the &lt;a href=&quot;http://www.meetup.com/SFRails/events/149935932/&quot;&gt;SFRails Meetup&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 22 Jan 2014 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 22 Jan 2014 00:00:00 -0500</pubDate>
         <link>/2014/01/22/email-best-practices/</link>
         <guid isPermaLink="true">/2014/01/22/email-best-practices/</guid>
       </item>
@@ -104,7 +128,7 @@
 
 &lt;p&gt;This talk was originally given as &lt;a href=&quot;http://go.sendgrid.com/WebinarCommincatingYourCode_GettingStartedWithEmailDeliverability_Download.html&quot;&gt;a SendGrid webinar&lt;/a&gt; and then adapted further for &lt;a href=&quot;http://venturebeat.com/events/devbeat2013&quot;&gt;DevBeat 2013&lt;/a&gt; in San Francisco.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 13 Nov 2013 00:00:00 -0700</pubDate>
+        <pubDate>Wed, 13 Nov 2013 00:00:00 -0500</pubDate>
         <link>/2013/11/13/communicating-your-code/</link>
         <guid isPermaLink="true">/2013/11/13/communicating-your-code/</guid>
       </item>
@@ -127,7 +151,7 @@
 &lt;div class=&quot;wide video-container&quot;&gt;&lt;iframe width=&quot;597&quot; height=&quot;336&quot; src=&quot;//www.youtube.com/embed/b5P3EEOV_oc?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 
 </description>
-        <pubDate>Fri, 25 Oct 2013 00:00:00 -0600</pubDate>
+        <pubDate>Fri, 25 Oct 2013 00:00:00 -0400</pubDate>
         <link>/2013/10/25/disrupt-nothing-the-Importance-of-getting-into-workflows/</link>
         <guid isPermaLink="true">/2013/10/25/disrupt-nothing-the-Importance-of-getting-into-workflows/</guid>
       </item>
@@ -165,16 +189,16 @@
 &lt;p&gt;To answer that, you need to know the strengths and weaknesses of each. Since I&amp;rsquo;m talking about emails, I&amp;rsquo;ll tell you a little about that.&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt;“Today, if you want to drive retention and repeat usage, there isn&amp;rsquo;t a better way to do it than email.”
-&amp;ndash; &lt;a href=&quot;http://avc.com&quot;&gt;Fred Wilson&lt;/a&gt;, Union Square Ventures&lt;/p&gt;&lt;/blockquote&gt;
+&amp;mdash; &lt;a href=&quot;http://avc.com&quot;&gt;Fred Wilson&lt;/a&gt;, Union Square Ventures&lt;/p&gt;&lt;/blockquote&gt;
 
 &lt;a name=&quot;Strengths&quot;&gt;&lt;/a&gt;
 &lt;h3&gt;Strengths&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Cross Platform&lt;/strong&gt; - Email is on every device today, meaning no matter where I am, as your user, I can get email.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Within Existing Workflow&lt;/strong&gt; - I already read my email, which means I&amp;rsquo;m not changing anything to read &lt;em&gt;your&lt;/em&gt; email.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Referenceable&lt;/strong&gt; - Email isn&amp;rsquo;t ephemeral, like notifications, meaning I can go back and reference it. That&amp;rsquo;s especially useful for things like receipts.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Preferred Channel&lt;/strong&gt; - A &lt;a href=&quot;http://pages.exacttarget.com/SFF14-US&quot;&gt;2012 Exact Target Study&lt;/a&gt; found that 77% of consumers want business communications to come through email, rather than another channel.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross Platform&lt;/strong&gt; &amp;ndash; Email is on every device today, meaning no matter where I am, as your user, I can get email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Within Existing Workflow&lt;/strong&gt; &amp;ndash; I already read my email, which means I&amp;rsquo;m not changing anything to read &lt;em&gt;your&lt;/em&gt; email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Referenceable&lt;/strong&gt; &amp;ndash; Email isn&amp;rsquo;t ephemeral, like notifications, meaning I can go back and reference it. That&amp;rsquo;s especially useful for things like receipts.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preferred Channel&lt;/strong&gt; &amp;ndash; A &lt;a href=&quot;http://pages.exacttarget.com/SFF14-US&quot;&gt;2012 Exact Target Study&lt;/a&gt; found that 77% of consumers want business communications to come through email, rather than another channel.&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -182,10 +206,10 @@
 &lt;h3&gt;Weaknesses&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Outside Your App&lt;/strong&gt; - As email is outside your app, by forcing me to use email, you&amp;rsquo;re forcing me to leave your app. &lt;span class=&quot;muted&quot;&gt;(and I may never come back)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Cross Platform&lt;/strong&gt; - Being cross-platform is also a weakness for email, as you don&amp;rsquo;t know what capabilities users will have when they open their email.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Non-Immediate&lt;/strong&gt; - Despite what it might feel like, I&amp;rsquo;m not always in my inbox, so if an email requires immediate action, I might not be there to take it.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Ignorable&lt;/strong&gt; - Since everyone get so much email, it&amp;rsquo;s easy to ignore, and I might miss your notification.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outside Your App&lt;/strong&gt; &amp;ndash; As email is outside your app, by forcing me to use email, you&amp;rsquo;re forcing me to leave your app. &lt;span class=&quot;muted&quot;&gt;(and I may never come back)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross Platform&lt;/strong&gt; &amp;ndash; Being cross-platform is also a weakness for email, as you don&amp;rsquo;t know what capabilities users will have when they open their email.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-Immediate&lt;/strong&gt; &amp;ndash; Despite what it might feel like, I&amp;rsquo;m not always in my inbox, so if an email requires immediate action, I might not be there to take it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ignorable&lt;/strong&gt; &amp;ndash; Since everyone get so much email, it&amp;rsquo;s easy to ignore, and I might miss your notification.&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -305,7 +329,7 @@
 &lt;span class='line-number'&gt;5&lt;/span&gt;
 &lt;span class='line-number'&gt;6&lt;/span&gt;
 &lt;span class='line-number'&gt;7&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='line'&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!&amp;ndash; Provide some context about the app and what&amp;#39;s happening &amp;ndash;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class='code'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='line'&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!&amp;mdash; Provide some context about the app and what&amp;#39;s happening &amp;mdash;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Super Cool App is Opening&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;If you don&amp;#39;t own it please &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://itunes.apple.com/us/app/myapp/id31415926&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;download it&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;span class='line'&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -560,7 +584,7 @@
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Thu, 05 Sep 2013 00:00:00 -0600</pubDate>
+        <pubDate>Thu, 05 Sep 2013 00:00:00 -0400</pubDate>
         <link>/2013/09/05/email-driving-repeat-usage-for-your-app/</link>
         <guid isPermaLink="true">/2013/09/05/email-driving-repeat-usage-for-your-app/</guid>
       </item>
@@ -688,7 +712,7 @@ window.onload = function () {
 &lt;/script&gt;
 
 </description>
-        <pubDate>Sun, 10 Feb 2013 00:00:00 -0700</pubDate>
+        <pubDate>Sun, 10 Feb 2013 00:00:00 -0500</pubDate>
         <link>/2013/02/10/developing-your-personal-website/</link>
         <guid isPermaLink="true">/2013/02/10/developing-your-personal-website/</guid>
       </item>
@@ -707,7 +731,7 @@ window.onload = function () {
 
 &lt;p&gt;This workshop was originally given in Boulder, CO for &lt;a href=&quot;http://bipr.org&quot;&gt;The Boulder Institute for Psychotherapy and Research&lt;/a&gt;. You may view the &lt;a href=&quot;/resources/2012-12-21-using-social-media-as-a-non-profit/social-media-for-non-profits.pdf&quot;&gt;slides&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 21 Dec 2012 00:00:00 -0700</pubDate>
+        <pubDate>Fri, 21 Dec 2012 00:00:00 -0500</pubDate>
         <link>/2012/12/21/using-social-media-as-a-non-profit/</link>
         <guid isPermaLink="true">/2012/12/21/using-social-media-as-a-non-profit/</guid>
       </item>
