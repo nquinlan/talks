@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "Building for Developers"
+alias: /building-for-developers
 styled: true
 ---
 
-{% slide 001 %}
+{% slide 001-001 %}
 
 ## Increasing the Awesome in Your Open Source or API Platform
 
