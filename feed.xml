@@ -24,6 +24,18 @@
 
 
 &lt;p&gt;This talk was originally given at the &lt;a href=&quot;http://devlink.net/&quot;&gt;devLink&lt;/a&gt; in Chattanooga, TN.&lt;/p&gt;
+
+&lt;a name=&quot;Links&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+
+&lt;p&gt;Several links are given over the course of the talk. They are presented here for easier clicking.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://sendgrid.com/blog/cheat-codes-for-good-documentation/&quot;&gt;&lt;strong&gt;Cheat Codes for Good Documentation&lt;/strong&gt;&lt;/a&gt; by Brandon West&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://sendgrid.com/blog/creating-sustainable-documentation-with-jekyll/&quot;&gt;&lt;strong&gt;Creating Sustainable Documentation with Jekyll&lt;/strong&gt;&lt;/a&gt; by Brandon West&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.pinboard.in/2011/10/the_fans_are_all_right/&quot;&gt;&lt;strong&gt;The Fans Are All Right&lt;/strong&gt;&lt;/a&gt; by Maciej Cegłowski&lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
         <pubDate>Thu, 28 Aug 2014 00:00:00 -0400</pubDate>
         <link>/2014/08/28/building-for-developers/</link>
