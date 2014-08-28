@@ -16,3 +16,10 @@ styled: true
 - [Slides]({% resource_dir %}building-for-developers.pdf)
 
 This talk was originally given at the [devLink](http://devlink.net/) in Chattanooga, TN.
+
+## Links
+Several links are given over the course of the talk. They are presented here for easier clicking.
+
+- [**Cheat Codes for Good Documentation**](http://sendgrid.com/blog/cheat-codes-for-good-documentation/) by Brandon West
+- [**Creating Sustainable Documentation with Jekyll**](http://sendgrid.com/blog/creating-sustainable-documentation-with-jekyll/) by Brandon West
+- [**The Fans Are All Right**](https://blog.pinboard.in/2011/10/the_fans_are_all_right/) by Maciej Cegłowski
